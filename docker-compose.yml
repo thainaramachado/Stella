@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: stella-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://stella:stella@db:5432/stella
+      - DJANGO_SETTINGS_MODULE=stella.settings
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: >
+      sh -c "python manage.py migrate &&
+              gunicorn app.wsgi:application --bind 0.0.0.0:8000"
+
+  db:
+    image: postgres:15
+    container_name: stella-db
+    restart: always
+    environment:
+      POSTGRES_USER: stella
+      POSTGRES_PASSWORD: stella
+      POSTGRES_DB: stella
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

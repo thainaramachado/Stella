@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'stella.urls'
+ROOT_URLCONF = 'app.urls' #Correção estava 'stella.urls' / apesar do seu projeto se chamar Stella, o diretório onde vc está construindo sua aplicação se chama 'app' então as configurações tem que se refenciar a ele.
 
 TEMPLATES = [
     {
@@ -66,7 +66,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'stella.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application' #Correção estava 'stella.wsgi.application' / apesar do seu projeto se chamar Stella, o diretório onde vc está construindo sua aplicação se chama 'app' então as configurações tem que se refenciar a ele.
 
 
 # Database

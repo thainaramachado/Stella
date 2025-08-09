@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stella.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')  #Correção estava 'stella.settings' / apesar do seu projeto se chamar Stella, o diretório onde vc está construindo sua aplicação se chama 'app' então as configurações tem que se refenciar a ele.
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
